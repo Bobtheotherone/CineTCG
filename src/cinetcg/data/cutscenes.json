@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "cutscenes": {
+    "cs_epic_zoom": {
+      "type": "procedural",
+      "duration": 1.2,
+      "sfx_cue": "whoosh"
+    },
+    "cs_finalcut_frames": {
+      "type": "frames",
+      "duration": 1.5,
+      "sfx_cue": "sting"
+    },
+    "cs_pack_reveal": {
+      "type": "procedural",
+      "duration": 0.8,
+      "sfx_cue": "reveal"
+    }
+  }
+}

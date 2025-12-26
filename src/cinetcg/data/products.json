@@ -1,0 +1,151 @@
+{
+  "version": 1,
+  "card_sets": {
+    "reel_one": [
+      "director_of_doom",
+      "final_cut",
+      "legendary_star",
+      "pyrotechnics"
+    ]
+  },
+  "packs": {
+    "booster_reel_one": {
+      "cards_per_pack": 5
+    }
+  },
+  "products": [
+    {
+      "id": "gems_small",
+      "category": "gems",
+      "title": "Pouch of Gems (100)",
+      "description": "Mock IAP. Grants 100 Gems. (No expiry, no hidden fees.)",
+      "price_display": "$1.99 (mock)",
+      "currency_cost": {},
+      "grants": [
+        {
+          "type": "gems",
+          "id": "gems",
+          "qty": 100
+        }
+      ]
+    },
+    {
+      "id": "gems_large",
+      "category": "gems",
+      "title": "Crate of Gems (300)",
+      "description": "Mock IAP. Grants 300 Gems.",
+      "price_display": "$4.99 (mock)",
+      "currency_cost": {},
+      "grants": [
+        {
+          "type": "gems",
+          "id": "gems",
+          "qty": 300
+        }
+      ]
+    },
+    {
+      "id": "cos_cardback_noir",
+      "category": "cosmetics",
+      "title": "Card Back: Noir",
+      "description": "A stylish monochrome card back. Cosmetic only.",
+      "price_display": "150 Gems",
+      "currency_cost": {
+        "gems": 150
+      },
+      "grants": [
+        {
+          "type": "cosmetic",
+          "id": "cardback_noir",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "cos_board_drivein",
+      "category": "cosmetics",
+      "title": "Board Skin: Drive-In",
+      "description": "A drive-in theater board. Cosmetic only.",
+      "price_display": "250 Gems",
+      "currency_cost": {
+        "gems": 250
+      },
+      "grants": [
+        {
+          "type": "cosmetic",
+          "id": "board_drivein",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "cos_avatar_clapper",
+      "category": "cosmetics",
+      "title": "Avatar: Clapper",
+      "description": "A classic clapperboard avatar. Cosmetic only.",
+      "price_display": "100 Gems",
+      "currency_cost": {
+        "gems": 100
+      },
+      "grants": [
+        {
+          "type": "cosmetic",
+          "id": "avatar_clapper",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "bundle_reel_one",
+      "category": "bundles",
+      "title": "Expansion Bundle: Reel One",
+      "description": "Fixed content bundle. Unlocks a defined set of cards (non-random).",
+      "price_display": "500 Gems",
+      "currency_cost": {
+        "gems": 500
+      },
+      "grants": [
+        {
+          "type": "card_set",
+          "id": "reel_one",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "pack_booster_reel_one",
+      "category": "packs",
+      "title": "Booster Pack: Reel One (5 cards)",
+      "description": "Randomized pack. Contains 5 cards. Duplicates beyond 4 convert to Shards.",
+      "price_display": "100 Gems",
+      "currency_cost": {
+        "gems": 100
+      },
+      "grants": [
+        {
+          "type": "pack",
+          "id": "booster_reel_one",
+          "qty": 1
+        }
+      ],
+      "odds": [
+        {
+          "rarity": "common",
+          "probability": 0.75
+        },
+        {
+          "rarity": "rare",
+          "probability": 0.2
+        },
+        {
+          "rarity": "epic",
+          "probability": 0.045
+        },
+        {
+          "rarity": "legendary",
+          "probability": 0.005
+        }
+      ]
+    }
+  ]
+}

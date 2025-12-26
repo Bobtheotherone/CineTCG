@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cinetcg"
+version = "0.1.0"
+description = "CineTCG V1 playable MVP skeleton (Pygame client + deterministic engine)."
+# For PyPI-style metadata (and nice rendering on GitHub).
+readme = "README.md"
+license = { file = "LICENSE" }
+# Pygame wheels lag brand-new CPython releases. Target stable versions for a smooth install.
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "pygame>=2.5,<3.0",
+  "jsonschema>=4.22",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.5",
+  "mypy>=1.10",
+]
+
+[project.scripts]
+cinetcg = "cinetcg.client.pygame_app.main:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+ignore = ["E501"]  # allow long strings in UI
+
+[tool.ruff.lint.isort]
+known-first-party = ["cinetcg"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_unused_ignores = true
+warn_return_any = true
+no_implicit_optional = true
+disallow_any_unimported = false
+ignore_missing_imports = true
+show_error_codes = true

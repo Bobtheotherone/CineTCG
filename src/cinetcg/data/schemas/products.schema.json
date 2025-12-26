@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CineTCG products.json schema",
+  "type": "object",
+  "required": [
+    "version",
+    "products"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "card_sets": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "packs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "cards_per_pack": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 20
+          }
+        },
+        "required": [
+          "cards_per_pack"
+        ]
+      }
+    },
+    "products": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/product"
+      }
+    }
+  },
+  "$defs": {
+    "rarity": {
+      "type": "string",
+      "enum": [
+        "common",
+        "rare",
+        "epic",
+        "legendary"
+      ]
+    },
+    "currency_cost": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "gold": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "gems": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "grant": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "id",
+        "qty"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "gems",
+            "gold",
+            "cosmetic",
+            "card_set",
+            "pack"
+          ]
+        },
+        "id": {
+          "type": "string"
+        },
+        "qty": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "odds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "rarity",
+          "probability"
+        ],
+        "properties": {
+          "rarity": {
+            "$ref": "#/$defs/rarity"
+          },
+          "probability": {
+            "type": "number",
+            "minimum": 0.0
+          }
+        }
+      }
+    },
+    "product": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "category",
+        "title",
+        "description",
+        "price_display",
+        "currency_cost",
+        "grants"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string"
+        },
+        "price_display": {
+          "type": "string"
+        },
+        "currency_cost": {
+          "$ref": "#/$defs/currency_cost"
+        },
+        "grants": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/grant"
+          }
+        },
+        "odds": {
+          "$ref": "#/$defs/odds"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "grants": {
+                "contains": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "const": "pack"
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ]
+                }
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "odds"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

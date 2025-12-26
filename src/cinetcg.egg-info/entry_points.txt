@@ -1,0 +1,2 @@
+[console_scripts]
+cinetcg = cinetcg.client.pygame_app.main:main

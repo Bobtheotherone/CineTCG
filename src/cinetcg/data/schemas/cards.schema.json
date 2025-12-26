@@ -1,0 +1,266 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CineTCG cards.json schema",
+  "type": "object",
+  "required": [
+    "version",
+    "cards"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "cards": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/card"
+      }
+    }
+  },
+  "$defs": {
+    "rarity": {
+      "type": "string",
+      "enum": [
+        "common",
+        "rare",
+        "epic",
+        "legendary"
+      ]
+    },
+    "keyword": {
+      "type": "string",
+      "enum": [
+        "Guard",
+        "Haste",
+        "Lifesteal",
+        "Token"
+      ]
+    },
+    "effect": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "oneOf": [
+        {
+          "properties": {
+            "type": {
+              "const": "damage"
+            },
+            "amount": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "target": {
+              "type": "string",
+              "enum": [
+                "enemy_creature",
+                "enemy_player",
+                "any"
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "amount",
+            "target"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "heal"
+            },
+            "amount": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "target": {
+              "type": "string",
+              "enum": [
+                "self_player",
+                "self_creature"
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "amount",
+            "target"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "draw"
+            },
+            "count": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "type",
+            "count"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "buff"
+            },
+            "attack_delta": {
+              "type": "integer"
+            },
+            "health_delta": {
+              "type": "integer"
+            },
+            "target": {
+              "type": "string",
+              "enum": [
+                "self_creature",
+                "any_creature"
+              ]
+            }
+          },
+          "required": [
+            "type",
+            "attack_delta",
+            "health_delta",
+            "target"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "properties": {
+            "type": {
+              "const": "summon"
+            },
+            "token_card_id": {
+              "type": "string"
+            },
+            "count": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "type",
+            "token_card_id",
+            "count"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "creature_stats": {
+      "type": "object",
+      "required": [
+        "attack",
+        "health"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "attack": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 20
+        },
+        "health": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 40
+        }
+      }
+    },
+    "card": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "type",
+        "rarity",
+        "cost",
+        "art_path",
+        "rules_text",
+        "keywords",
+        "effects"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "creature",
+            "spell"
+          ]
+        },
+        "rarity": {
+          "$ref": "#/$defs/rarity"
+        },
+        "cost": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
+        },
+        "art_path": {
+          "type": "string"
+        },
+        "cutscene_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "rules_text": {
+          "type": "string"
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/keyword"
+          }
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/effect"
+          }
+        },
+        "creature_stats": {
+          "$ref": "#/$defs/creature_stats"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "creature"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "creature_stats"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

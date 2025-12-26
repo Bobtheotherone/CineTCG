@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CineTCG cutscenes.json schema",
+  "type": "object",
+  "required": [
+    "version",
+    "cutscenes"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "cutscenes": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/cutscene"
+      }
+    }
+  },
+  "$defs": {
+    "cutscene": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "duration",
+        "sfx_cue"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "frames",
+            "procedural"
+          ]
+        },
+        "duration": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "sfx_cue": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

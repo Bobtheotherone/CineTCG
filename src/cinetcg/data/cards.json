@@ -1,0 +1,277 @@
+{
+  "version": 1,
+  "cards": [
+    {
+      "id": "street_extra",
+      "name": "Street Extra",
+      "type": "creature",
+      "rarity": "common",
+      "cost": 1,
+      "art_path": "assets/cards/street_extra.png",
+      "rules_text": "A familiar face in every crowd.",
+      "keywords": [],
+      "effects": [],
+      "creature_stats": {
+        "attack": 1,
+        "health": 2
+      }
+    },
+    {
+      "id": "camera_grip",
+      "name": "Camera Grip",
+      "type": "creature",
+      "rarity": "common",
+      "cost": 2,
+      "art_path": "assets/cards/camera_grip.png",
+      "rules_text": "Keeps the shot steady. Keeps the line held.",
+      "keywords": [],
+      "effects": [],
+      "creature_stats": {
+        "attack": 2,
+        "health": 2
+      }
+    },
+    {
+      "id": "festival_bouncer",
+      "name": "Festival Bouncer",
+      "type": "creature",
+      "rarity": "common",
+      "cost": 3,
+      "art_path": "assets/cards/festival_bouncer.png",
+      "rules_text": "Guard (must be attacked first).",
+      "keywords": [
+        "Guard"
+      ],
+      "effects": [],
+      "creature_stats": {
+        "attack": 2,
+        "health": 4
+      }
+    },
+    {
+      "id": "bodyguard",
+      "name": "Bodyguard",
+      "type": "creature",
+      "rarity": "rare",
+      "cost": 2,
+      "art_path": "assets/cards/bodyguard.png",
+      "rules_text": "Guard (must be attacked first).",
+      "keywords": [
+        "Guard"
+      ],
+      "effects": [],
+      "creature_stats": {
+        "attack": 2,
+        "health": 3
+      }
+    },
+    {
+      "id": "stunt_driver",
+      "name": "Stunt Driver",
+      "type": "creature",
+      "rarity": "rare",
+      "cost": 3,
+      "art_path": "assets/cards/stunt_driver.png",
+      "rules_text": "Haste (can attack this turn).",
+      "keywords": [
+        "Haste"
+      ],
+      "effects": [],
+      "creature_stats": {
+        "attack": 3,
+        "health": 2
+      }
+    },
+    {
+      "id": "vampire_actor",
+      "name": "Vampire Actor",
+      "type": "creature",
+      "rarity": "rare",
+      "cost": 4,
+      "art_path": "assets/cards/vampire_actor.png",
+      "rules_text": "Lifesteal (damage heals you).",
+      "keywords": [
+        "Lifesteal"
+      ],
+      "effects": [],
+      "creature_stats": {
+        "attack": 3,
+        "health": 4
+      }
+    },
+    {
+      "id": "director_of_doom",
+      "name": "Director of Doom",
+      "type": "creature",
+      "rarity": "epic",
+      "cost": 6,
+      "art_path": "assets/cards/director_of_doom.png",
+      "cutscene_id": "cs_epic_zoom",
+      "rules_text": "A cut-in worthy of the silver screen. Guard.",
+      "keywords": [
+        "Guard"
+      ],
+      "effects": [],
+      "creature_stats": {
+        "attack": 5,
+        "health": 6
+      }
+    },
+    {
+      "id": "legendary_star",
+      "name": "The Legendary Star",
+      "type": "creature",
+      "rarity": "legendary",
+      "cost": 8,
+      "art_path": "assets/cards/legendary_star.png",
+      "cutscene_id": "cs_finalcut_frames",
+      "rules_text": "Haste. Lifesteal.",
+      "keywords": [
+        "Haste",
+        "Lifesteal"
+      ],
+      "effects": [],
+      "creature_stats": {
+        "attack": 7,
+        "health": 7
+      }
+    },
+    {
+      "id": "flashbang",
+      "name": "Flashbang",
+      "type": "spell",
+      "rarity": "common",
+      "cost": 2,
+      "art_path": "assets/cards/flashbang.png",
+      "rules_text": "Deal 2 damage to any target.",
+      "keywords": [],
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 2,
+          "target": "any"
+        }
+      ]
+    },
+    {
+      "id": "healing_montage",
+      "name": "Healing Montage",
+      "type": "spell",
+      "rarity": "common",
+      "cost": 2,
+      "art_path": "assets/cards/healing_montage.png",
+      "rules_text": "Heal your player for 3.",
+      "keywords": [],
+      "effects": [
+        {
+          "type": "heal",
+          "amount": 3,
+          "target": "self_player"
+        }
+      ]
+    },
+    {
+      "id": "script_rewrite",
+      "name": "Script Rewrite",
+      "type": "spell",
+      "rarity": "rare",
+      "cost": 3,
+      "art_path": "assets/cards/script_rewrite.png",
+      "rules_text": "Draw 2 cards.",
+      "keywords": [],
+      "effects": [
+        {
+          "type": "draw",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "makeover",
+      "name": "Makeover",
+      "type": "spell",
+      "rarity": "rare",
+      "cost": 2,
+      "art_path": "assets/cards/makeover.png",
+      "rules_text": "Give a creature +2/+2.",
+      "keywords": [],
+      "effects": [
+        {
+          "type": "buff",
+          "attack_delta": 2,
+          "health_delta": 2,
+          "target": "any_creature"
+        }
+      ]
+    },
+    {
+      "id": "summon_extras",
+      "name": "Summon Extras",
+      "type": "spell",
+      "rarity": "common",
+      "cost": 2,
+      "art_path": "assets/cards/summon_extras.png",
+      "rules_text": "Summon two 1/1 Extras.",
+      "keywords": [],
+      "effects": [
+        {
+          "type": "summon",
+          "token_card_id": "token_extra",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "id": "pyrotechnics",
+      "name": "Pyrotechnics",
+      "type": "spell",
+      "rarity": "rare",
+      "cost": 4,
+      "art_path": "assets/cards/pyrotechnics.png",
+      "rules_text": "Deal 4 damage to an enemy creature.",
+      "keywords": [],
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 4,
+          "target": "enemy_creature"
+        }
+      ]
+    },
+    {
+      "id": "final_cut",
+      "name": "Final Cut",
+      "type": "spell",
+      "rarity": "legendary",
+      "cost": 7,
+      "art_path": "assets/cards/final_cut.png",
+      "cutscene_id": "cs_finalcut_frames",
+      "rules_text": "Deal 8 damage to the enemy player.",
+      "keywords": [],
+      "effects": [
+        {
+          "type": "damage",
+          "amount": 8,
+          "target": "enemy_player"
+        }
+      ]
+    },
+    {
+      "id": "token_extra",
+      "name": "Extra",
+      "type": "creature",
+      "rarity": "common",
+      "cost": 0,
+      "art_path": "assets/cards/token_extra.png",
+      "rules_text": "Token creature.",
+      "keywords": [
+        "Token"
+      ],
+      "effects": [],
+      "creature_stats": {
+        "attack": 1,
+        "health": 1
+      }
+    }
+  ]
+}
