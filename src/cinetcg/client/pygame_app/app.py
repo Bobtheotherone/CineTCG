@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Optional
 
 import pygame  # type: ignore[import-not-found]
 
@@ -13,7 +12,7 @@ from cinetcg.services.inventory import InventoryService
 from cinetcg.services.telemetry import TelemetryService
 
 from .asset_manager import AssetManager
-from .scene_base import Scene, SceneTransition
+from .scene_base import Scene
 
 
 @dataclass
@@ -27,10 +26,10 @@ class GameContext:
     telemetry: TelemetryService
 
     # Loaded at boot
-    cards: Optional[CardDatabase] = None
-    products: Optional[ProductCatalog] = None
-    cutscenes: Optional[CutsceneCatalog] = None
-    inventory: Optional[InventoryService] = None
+    cards: CardDatabase | None = None
+    products: ProductCatalog | None = None
+    cutscenes: CutsceneCatalog | None = None
+    inventory: InventoryService | None = None
 
 
 class App:

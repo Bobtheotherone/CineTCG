@@ -1,8 +1,8 @@
 from __future__ import annotations
 
 import random
+from collections.abc import Iterable, Sequence
 from dataclasses import dataclass, field
-from typing import Iterable, Sequence
 
 from .actions import Action, AttackAction, EndTurnAction, PlayCardAction, TargetRef
 from .types import (
@@ -11,7 +11,6 @@ from .types import (
     CardDefinition,
     DamageEffect,
     DrawEffect,
-    Effect,
     HealEffect,
     Keyword,
     SummonEffect,
@@ -481,7 +480,7 @@ def _attack(state: MatchState, action: AttackAction) -> StepResult:
     damage_to_att = defender.attack
 
     dealt = _damage_creature(state, enemy, def_slot, damage_to_def)
-    dealt_back = _damage_creature(state, action.player, action.attacker_slot, damage_to_att)
+    _damage_creature(state, action.player, action.attacker_slot, damage_to_att)
 
     if attacker.has("Lifesteal"):
         _heal_player(state, action.player, dealt)

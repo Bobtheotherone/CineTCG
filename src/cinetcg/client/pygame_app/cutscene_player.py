@@ -2,9 +2,11 @@ from __future__ import annotations
 
 import glob
 from dataclasses import dataclass
+
 import pygame  # type: ignore[import-not-found]
 
 from cinetcg.services.content import CutsceneConfig
+
 from .asset_manager import AssetManager
 
 

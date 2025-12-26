@@ -9,7 +9,6 @@ from ..cutscene_player import CutscenePlayer
 from ..scene_base import Scene, SceneTransition
 from ..ui import Button, draw_text
 
-
 CATEGORIES = ["gems", "cosmetics", "bundles", "packs"]
 
 

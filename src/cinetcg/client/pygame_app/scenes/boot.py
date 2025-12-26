@@ -5,6 +5,7 @@ import traceback
 import pygame  # type: ignore[import-not-found]
 
 from cinetcg.services.inventory import InventoryService
+
 from ..app import GameContext
 from ..scene_base import SceneTransition
 from ..ui import Button, draw_text

@@ -4,7 +4,12 @@ import pygame  # type: ignore[import-not-found]
 
 from cinetcg.engine.actions import AttackAction, EndTurnAction, PlayCardAction, TargetRef
 from cinetcg.engine.ai import AISpec, ai_take_turn
-from cinetcg.engine.match import MatchState, get_valid_attack_targets, get_valid_targets_for_play, step
+from cinetcg.engine.match import (
+    MatchState,
+    get_valid_attack_targets,
+    get_valid_targets_for_play,
+    step,
+)
 
 from ..app import GameContext
 from ..cutscene_player import CutscenePlayer
@@ -276,7 +281,6 @@ class MatchScene:
     def render(self, screen: pygame.Surface) -> None:
         screen.fill((8, 10, 14))
         fonts = self.ctx.assets.fonts
-        inv = self.ctx.inventory
 
         # header / controls
         self.btn_menu.draw(screen, fonts.ui)
@@ -296,7 +300,7 @@ class MatchScene:
 
         # targeting overlays
         if self._pending_target_for_card is not None:
-            hand_index, card_id = self._pending_target_for_card
+            _hand_index, card_id = self._pending_target_for_card
             valid = get_valid_targets_for_play(self.state, 0, card_id)
             self._draw_target_highlights(screen, valid)
         if self._pending_attacker_slot is not None:

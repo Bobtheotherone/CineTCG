@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-
 from .actions import Action, AttackAction, EndTurnAction, PlayCardAction, TargetRef
 from .match import CreatureInstance, MatchState, PlayerState
 

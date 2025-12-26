@@ -8,7 +8,6 @@ from ..app import GameContext
 from ..scene_base import Scene, SceneTransition
 from ..ui import Button, draw_text
 
-
 RARITIES = ["all", "common", "rare", "epic", "legendary"]
 TYPES = ["all", "creature", "spell"]
 

@@ -8,7 +8,7 @@ import pygame  # type: ignore[import-not-found]
 
 @dataclass
 class SceneTransition:
-    next_scene: "Scene"
+    next_scene: Scene
 
 
 class Scene(Protocol):

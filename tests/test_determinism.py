@@ -1,7 +1,13 @@
 from __future__ import annotations
 
-from cinetcg.engine.actions import EndTurnAction, PlayCardAction, TargetRef, AttackAction
-from cinetcg.engine.match import new_match, replay, step, get_valid_targets_for_play, get_valid_attack_targets
+from cinetcg.engine.actions import AttackAction, EndTurnAction, PlayCardAction, TargetRef
+from cinetcg.engine.match import (
+    get_valid_attack_targets,
+    get_valid_targets_for_play,
+    new_match,
+    replay,
+    step,
+)
 from cinetcg.engine.serialize import snapshot
 from cinetcg.paths import get_paths
 from cinetcg.services.content import ContentService
@@ -23,9 +29,8 @@ def _choose_action(state) -> object:
         card = state.cards.get(cid)
         if card.cost > ps.energy:
             continue
-        if card.type == "creature":
-            if any(slot is None for slot in ps.board):
-                return PlayCardAction(player=p, hand_index=i, target=None)
+        if card.type == "creature" and any(slot is None for slot in ps.board):
+            return PlayCardAction(player=p, hand_index=i, target=None)
 
     # Then spells
     for i, cid in enumerate(ps.hand):

@@ -13,11 +13,11 @@ class TargetRef:
     slot: int | None = None
 
     @staticmethod
-    def player_target(player: int) -> "TargetRef":
+    def player_target(player: int) -> TargetRef:
         return TargetRef(kind="player", player=player, slot=None)
 
     @staticmethod
-    def creature_target(player: int, slot: int) -> "TargetRef":
+    def creature_target(player: int, slot: int) -> TargetRef:
         return TargetRef(kind="creature", player=player, slot=slot)
 
 

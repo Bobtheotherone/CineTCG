@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import json
 import random
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable, Mapping
 
 from cinetcg.engine.types import CardDatabase, CardDefinition
 from cinetcg.services.content import Product, ProductCatalog
@@ -21,7 +21,7 @@ class CosmeticsLoadout:
     avatar_id: str = "default_avatar"
 
     @staticmethod
-    def from_dict(d: Mapping[str, object]) -> "CosmeticsLoadout":
+    def from_dict(d: Mapping[str, object]) -> CosmeticsLoadout:
         return CosmeticsLoadout(
             board_skin_id=str(d.get("board_skin_id", "default_board")),
             card_back_id=str(d.get("card_back_id", "default_back")),
@@ -42,7 +42,7 @@ class DeckEntry:
     count: int
 
     @staticmethod
-    def from_dict(d: Mapping[str, object]) -> "DeckEntry":
+    def from_dict(d: Mapping[str, object]) -> DeckEntry:
         cid = d.get("card_id")
         cnt = d.get("count")
         if not isinstance(cid, str) or not isinstance(cnt, int):
@@ -62,7 +62,7 @@ class SavedHand:
     is_default: bool = False
 
     @staticmethod
-    def from_dict(d: Mapping[str, object]) -> "SavedHand":
+    def from_dict(d: Mapping[str, object]) -> SavedHand:
         did = d.get("id")
         name = d.get("name")
         if not isinstance(did, str) or not isinstance(name, str):
@@ -98,7 +98,7 @@ class RankedState:
     peak_rating: int = 1000
 
     @staticmethod
-    def from_dict(d: Mapping[str, object]) -> "RankedState":
+    def from_dict(d: Mapping[str, object]) -> RankedState:
         rating = d.get("rating", 1000)
         peak = d.get("peak_rating", 1000)
         return RankedState(
@@ -115,7 +115,7 @@ class SettingsState:
     always_show_cutscenes: bool = False
 
     @staticmethod
-    def from_dict(d: Mapping[str, object]) -> "SettingsState":
+    def from_dict(d: Mapping[str, object]) -> SettingsState:
         return SettingsState(always_show_cutscenes=bool(d.get("always_show_cutscenes", False)))
 
     def to_dict(self) -> dict[str, object]:
@@ -137,7 +137,7 @@ class Profile:
     meta_rng_seed: int
 
     @staticmethod
-    def default(cards_db: CardDatabase) -> "Profile":
+    def default(cards_db: CardDatabase) -> Profile:
         # Starter collection: enough to build at least one 30-card deck.
         collection: dict[str, int] = {}
         for cid, card in cards_db.cards.items():
@@ -200,7 +200,7 @@ class Profile:
         )
 
     @staticmethod
-    def from_dict(d: Mapping[str, object], cards_db: CardDatabase) -> "Profile":
+    def from_dict(d: Mapping[str, object], cards_db: CardDatabase) -> Profile:
         try:
             version = int(d.get("version", 1))
         except Exception:

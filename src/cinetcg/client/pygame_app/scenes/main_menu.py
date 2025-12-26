@@ -4,8 +4,8 @@ import random
 
 import pygame  # type: ignore[import-not-found]
 
-from cinetcg.engine.match import MatchConfig, new_match
 from cinetcg.engine.ai import AISpec
+from cinetcg.engine.match import MatchConfig, new_match
 
 from ..app import GameContext
 from ..scene_base import Scene, SceneTransition

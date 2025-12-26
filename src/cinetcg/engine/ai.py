@@ -92,9 +92,8 @@ def _pick_best_play(state: MatchState, player: int, spec: AISpec) -> PlayCardAct
     if spec.difficulty <= 0:
         if state.rng.random() < 0.35:
             return None
-    elif spec.difficulty == 1:
-        if state.rng.random() < 0.10:
-            return None
+    elif spec.difficulty == 1 and state.rng.random() < 0.10:
+        return None
     return best[1]
 
 
